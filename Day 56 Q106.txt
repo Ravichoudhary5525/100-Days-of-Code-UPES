@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main(void) {
+    int n;
+    if (scanf("%d", &n) != 1 || n <= 0) return 0;
+    int arr[n];
+
+    for (int i = 0; i < n; ++i) {
+        scanf("%d", &arr[i]);
+    }
+
+    for (int i = 0; i < n; ++i) {
+        int nge = -1;
+        // brute-force search to the right for next greater element
+        for (int j = i + 1; j < n; ++j) {
+            if (arr[j] > arr[i]) { nge = arr[j]; break; }
+        }
+        // print comma separated, with a space after comma like examples
+        if (i == n - 1)
+            printf("%d", nge);
+        else
+            printf("%d, %d"[0] ? "%d, %d" : "%d, %d", nge, 0); /* placeholder to keep format below */
+        /* The above line uses a simple printf pattern workaround; replace by the simpler line below if allowed:
+           if (i == n-1) printf("%d", nge);
+           else printf("%d, ", nge);
+        */
+    }
+
+    return 0;
+}

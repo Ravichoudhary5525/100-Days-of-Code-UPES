@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    char filename[100];
+    FILE *fp;
+    char line[200];
+
+    printf("Enter filename: ");
+    scanf("%s", filename);
+
+    // Try to open file in read mode
+    fp = fopen(filename, "r");
+
+    if (fp == NULL) {
+        printf("Error: File does not exist!\n");
+        return 1;
+    }
+
+    printf("File opened successfully.\n\n");
+
+    // Read and display content line by line
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        printf("%s", line);
+    }
+
+    fclose(fp);
+    return 0;
+}

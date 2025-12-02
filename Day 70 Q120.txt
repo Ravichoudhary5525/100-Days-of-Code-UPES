@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+
+int main() {
+    char str[200];
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    int len = strlen(str);
+
+    // Convert to sentence/title case
+    int newWord = 1;  // flag: true at start of string or after space
+
+    for (int i = 0; i < len; i++) {
+        if (newWord && isalpha(str[i])) {
+            str[i] = toupper(str[i]);      // Capitalize first letter
+            newWord = 0;                   // Now inside a word
+        } 
+        else {
+            str[i] = tolower(str[i]);      // make other letters lowercase
+        }
+
+        if (str[i] == ' ') {
+            newWord = 1;       // next character will be start of next word
+        }
+    }
+
+    printf("Output: %s", str);
+
+    return 0;
+}

@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+// Define struct Student
+struct Student {
+    char name[50];
+    int roll_no;
+    int marks;
+};
+
+int main() {
+    struct Student s1;
+
+    // Read student details
+    printf("Enter Name: ");
+    scanf("%s", s1.name);  // assuming name has no spaces
+
+    printf("Enter Roll: ");
+    scanf("%d", &s1.roll_no);
+
+    printf("Enter Marks: ");
+    scanf("%d", &s1.marks);
+
+    // Print student details
+    printf("Name: %s | Roll: %d | Marks: %d\n", s1.name, s1.roll_no, s1.marks);
+
+    return 0;
+}

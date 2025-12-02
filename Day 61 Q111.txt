@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    int n, k;
+    scanf("%d", &n);          // size of array
+    
+    int arr[n];
+    for(int i = 0; i < n; i++)
+        scanf("%d", &arr[i]); // array input
+        
+    scanf("%d", &k);          // window size
+    
+    // For each subarray of size k
+    for(int i = 0; i <= n - k; i++) {
+        int found = 0;        // flag to check negative
+        
+        // Check first negative element in window
+        for(int j = i; j < i + k; j++) {
+            if(arr[j] < 0) {
+                printf("%d", arr[j]);
+                found = 1;
+                break;
+            }
+        }
+        
+        if(!found)
+            printf("0");      // no negative found
+        
+        if(i < n - k)
+            printf(" ");      // space except last
+    }
+    
+    return 0;
+}

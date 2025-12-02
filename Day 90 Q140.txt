@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+// Define enum for Gender
+enum Gender {
+    MALE,
+    FEMALE,
+    OTHER
+};
+
+// Define struct Person with enum Gender
+struct Person {
+    char name[50];
+    enum Gender gender;
+};
+
+int main() {
+    // Create a person
+    struct Person p1;
+    p1.gender = MALE;  // Assign enum value
+
+    // Print gender
+    switch(p1.gender) {
+        case MALE:
+            printf("Male\n");
+            break;
+        case FEMALE:
+            printf("Female\n");
+            break;
+        case OTHER:
+            printf("Other\n");
+            break;
+    }
+
+    return 0;
+}

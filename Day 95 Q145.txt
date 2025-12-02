@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+// Define struct Student
+struct Student {
+    char name[50];
+    int roll_no;
+    int marks;
+};
+
+// Function to find and return the top student
+struct Student getTopStudent(struct Student students[], int n) {
+    int max_index = 0;
+    for (int i = 1; i < n; i++) {
+        if (students[i].marks > students[max_index].marks) {
+            max_index = i;
+        }
+    }
+    return students[max_index];
+}
+
+int main() {
+    int n = 3;
+    struct Student students[n];
+
+    // Read student details
+    for (int i = 0; i < n; i++) {
+        printf("Enter details for student %d:\n", i+1);
+        printf("Name: ");
+        scanf("%s", students[i].name);  // assuming no spaces
+        printf("Roll: ");
+        scanf("%d", &students[i].roll_no);
+        printf("Marks: ");
+        scanf("%d", &students[i].marks);
+        printf("\n");
+    }
+
+    // Get top student
+    struct Student topper = getTopStudent(students, n);
+
+    // Print top student's details
+    printf("Top Student: %s | Roll: %d | Marks: %d\n", topper.name, topper.roll_no, topper.marks);
+
+    return 0;
+}

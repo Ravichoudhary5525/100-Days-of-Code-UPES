@@ -1,0 +1,58 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define nested structure Date
+struct Date {
+    int day;
+    int month;
+    int year;
+};
+
+// Define Employee structure
+struct Employee {
+    char name[50];
+    int id;
+    struct Date joiningDate;
+};
+
+int main() {
+    struct Employee emp;
+    FILE *file;
+
+    // Read employee details
+    printf("Enter Name: ");
+    scanf("%s", emp.name);  // assuming no spaces
+
+    printf("Enter ID: ");
+    scanf("%d", &emp.id);
+
+    printf("Enter Joining Date (dd mm yyyy): ");
+    scanf("%d %d %d", &emp.joiningDate.day, &emp.joiningDate.month, &emp.joiningDate.year);
+
+    // Write employee to binary file
+    file = fopen("employee.dat", "wb");
+    if (file == NULL) {
+        printf("Error opening file for writing.\n");
+        return 1;
+    }
+    fwrite(&emp, sizeof(struct Employee), 1, file);
+    fclose(file);
+
+    // Read employee from binary file
+    struct Employee emp_read;
+    file = fopen("employee.dat", "rb");
+    if (file == NULL) {
+        printf("Error opening file for reading.\n");
+        return 1;
+    }
+    fread(&emp_read, sizeof(struct Employee), 1, file);
+    fclose(file);
+
+    // Display employee details read from file
+    printf("\nEmployee details read from file:\n");
+    printf("Name: %s | ID: %d | Joining Date: %02d/%02d/%04d\n",
+           emp_read.name, emp_read.id,
+           emp_read.joiningDate.day, emp_read.joiningDate.month, emp_read.joiningDate.year);
+
+    return 0;
+}

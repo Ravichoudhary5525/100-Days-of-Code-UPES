@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    int n, k;
+
+    // Input array size
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    // Input array elements
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Input k
+    printf("Enter the value of k: ");
+    scanf("%d", &k);
+
+    // Simple bubble sort to sort the array
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+
+    // Print kth smallest element
+    if(k >= 1 && k <= n) {
+        printf("The %dth smallest element is: %d\n", k, arr[k-1]);
+    } else {
+        printf("Invalid value of k.\n");
+    }
+
+    return 0;
+}

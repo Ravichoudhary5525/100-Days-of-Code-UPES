@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define struct Student
+struct Student {
+    char name[50];
+    int roll_no;
+    int marks;
+};
+
+// Function to compare two students
+int compareStudents(struct Student s1, struct Student s2) {
+    if (strcmp(s1.name, s2.name) == 0 &&
+        s1.roll_no == s2.roll_no &&
+        s1.marks == s2.marks) {
+        return 1; // Same
+    } else {
+        return 0; // Different
+    }
+}
+
+int main() {
+    struct Student s1, s2;
+
+    // Input student 1 details
+    printf("Enter Student 1 details:\n");
+    printf("Name: ");
+    scanf("%s", s1.name);  // assuming no spaces
+    printf("Roll: ");
+    scanf("%d", &s1.roll_no);
+    printf("Marks: ");
+    scanf("%d", &s1.marks);
+
+    // Input student 2 details
+    printf("\nEnter Student 2 details:\n");
+    printf("Name: ");
+    scanf("%s", s2.name);
+    printf("Roll: ");
+    scanf("%d", &s2.roll_no);
+    printf("Marks: ");
+    scanf("%d", &s2.marks);
+
+    // Compare and print result
+    if (compareStudents(s1, s2)) {
+        printf("\nSame\n");
+    } else {
+        printf("\nDifferent\n");
+    }
+
+    return 0;
+}

@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main() {
+    int n, x;
+    
+    // Read array size
+    scanf("%d", &n);
+    int arr[n];
+
+    // Read array elements (sorted)
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Read the value x
+    scanf("%d", &x);
+
+    int index = -1;
+
+    // Find the smallest element >= x
+    for(int i = 0; i < n; i++) {
+        if(arr[i] >= x) {
+            index = i;
+            break;
+        }
+    }
+
+    // Print result index
+    printf("%d", index);
+
+    return 0;
+}

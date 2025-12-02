@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    FILE *fp;
+    char ch;
+    int characters = 0, words = 0, lines = 0;
+    int inWord = 0;
+
+    fp = fopen("sample.txt", "r");   // open the file in read mode
+    if (fp == NULL) {
+        printf("Error: Could not open file!\n");
+        return 1;
+    }
+
+    while ((ch = fgetc(fp)) != EOF) {
+        characters++;                     // count every character
+
+        if (ch == '\n')
+            lines++;                      // count lines
+
+        if (!isspace(ch) && inWord == 0) {
+            words++;                      // new word detected
+            inWord = 1;
+        }
+
+        if (isspace(ch)) {
+            inWord = 0;                   // end of current word
+        }
+    }
+
+    fclose(fp);
+
+    printf("Characters: %d\n", characters);
+    printf("Words: %d\n", words);
+    printf("Lines: %d\n", lines);
+
+    return 0;
+}

@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define struct Student
+struct Student {
+    char name[50];
+    int roll_no;
+    int marks;
+};
+
+int main() {
+    // Dynamically allocate memory for one Student
+    struct Student *s = (struct Student*) malloc(sizeof(struct Student));
+
+    if (s == NULL) {
+        printf("Memory allocation failed.\n");
+        return 1;
+    }
+
+    // Read student details
+    printf("Enter Name: ");
+    scanf("%s", s->name);  // assuming no spaces
+
+    printf("Enter Roll: ");
+    scanf("%d", &s->roll_no);
+
+    printf("Enter Marks: ");
+    scanf("%d", &s->marks);
+
+    // Print student details
+    printf("Name: %s | Roll: %d | Marks: %d\n", s->name, s->roll_no, s->marks);
+
+    // Free dynamically allocated memory
+    free(s);
+
+    return 0;
+}
